@@ -46,6 +46,8 @@
 
     .topbar{
       display:flex;
+	  position: relative;   /* ✅ ADD */
+	  z-index: 50;          /* ✅ ADD */
       align-items:center;
       justify-content:space-between;
       gap:14px;
@@ -110,7 +112,9 @@
       gap:10px;
       flex-wrap:wrap;
       justify-content:flex-end;
-    }
+	  position: relative;   /* ✅ ADD */
+	  z-index: 51;          /* ✅ ADD */ 
+	  }
 
     .btn{
       text-decoration:none;
@@ -137,6 +141,62 @@
   box-shadow: 0 0 22px rgba(245,193,108,.25);
 }
 
+.download-wrap{
+  position:relative;
+}
+
+.download-menu{
+  position:absolute;
+  top:52px;
+  right:0;
+  background:rgba(15,20,30,.97);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow: var(--shadow);
+
+  display:none;
+  min-width:200px;
+
+ z-index: 100;   /* ✅ controlled, correct layer */
+ 
+}
+.topbar,
+.wrap{
+  overflow:visible;
+}
+.download-menu{
+  position:absolute;
+  top:52px;
+  right:0;
+  background:rgba(15,20,30,.97);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow: var(--shadow);
+
+  display:none;
+  min-width:200px;
+
+  z-index:100;   /* ✅ FIXED */
+}
+
+
+.download-menu a{
+  display:block;
+  padding:12px 14px;
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+  font-size:13px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.download-menu a:last-child{
+  border-bottom:none;
+}
+
+.download-menu a:hover{
+  background:rgba(245,193,108,.15);
+}
 
     .hero{
       margin-top:18px;
@@ -330,11 +390,34 @@
           <p>Offline • x64 & ARM64 • SHA-256 Device ID • Desktop output</p>
         </div>
       </div>
-      <div class="links">
-        <a class="btn primary" href="#" onclick="alert('Add your GitHub Releases link here'); return false;">⬇ Download</a>
-        <a class="btn" href="https://www.arkenapps.com" target="_blank" rel="noreferrer">🌐 ArkenApps</a>
-        <a class="btn" href="https://www.globalitsoft.com" target="_blank" rel="noreferrer">🌍 GlobalITSoft</a>
-      </div>
+<div class="links">
+
+  <!-- DOWNLOAD DROPDOWN -->
+  <div class="download-wrap">
+    <button class="btn primary" onclick="toggleDownload()">
+      ⬇ Download
+    </button>
+
+    <div class="download-menu" id="downloadMenu">
+      <a href="https://github.com/arkenapps/ArkenDeviceFingerprint/raw/main/Arken_Device_Fingerprint_x64.exe">
+        --- Windows x64
+      </a>
+      <a href="https://github.com/arkenapps/ArkenDeviceFingerprint/raw/main/ArkenDeviceFingerprint_arm64.exe">
+        --- Windows ARM64
+      </a>
+    </div>
+  </div>
+
+  <!-- GITHUB LINK -->
+  <a class="btn" href="https://github.com/arkenapps/ArkenDeviceFingerprint" target="_blank">
+     GitHub
+  </a>
+
+  <a class="btn" href="https://www.arkenapps.com" target="_blank">🌐 ArkenApps</a>
+  <a class="btn" href="https://www.globalitsoft.com" target="_blank">🌍 GlobalITSoft</a>
+
+</div>
+
     </header>
 
     <!-- HERO -->
@@ -456,5 +539,20 @@ Saved to: C:\Users\...\Desktop\device_fingerprint.txt</div>
     </footer>
 
   </div>
+  
+  <script>
+function toggleDownload(){
+  const menu = document.getElementById("downloadMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+document.addEventListener("click", function(e){
+  const wrap = document.querySelector(".download-wrap");
+  if (!wrap.contains(e.target)) {
+    document.getElementById("downloadMenu").style.display = "none";
+  }
+});
+</script>
+
 </body>
 </html>
