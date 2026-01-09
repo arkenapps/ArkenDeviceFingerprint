@@ -1,4 +1,4 @@
-# 🔐 Arken Windows Device Fingerprint Utility
+*** Arken Windows Device Fingerprint Utility
 
 A lightweight, offline Windows utility that generates a unique device fingerprint
 using system-level identifiers. Built for IT teams, developers, and support
@@ -6,9 +6,9 @@ professionals who need a reliable way to identify and register Windows devices.
 
 ---
 
-## 🌐 Live Project Page (Recommended)
+### 🌐 Live Project Page
 
-👉 **View the full project page with screenshots, downloads, and details:**  
+ **View the full project page with screenshots, downloads, and details:**  
 🔗 https://arkenapps.github.io/ArkenDeviceFingerprint/
 
 > The project page includes:
@@ -19,7 +19,7 @@ professionals who need a reliable way to identify and register Windows devices.
 
 ---
 
-## ✨ Key Features
+###  Key Features
 
 - Works on **Windows x64 and ARM64**
 - Fully **offline** (no internet required)
@@ -32,7 +32,7 @@ professionals who need a reliable way to identify and register Windows devices.
 
 ---
 
-## 🧠 What Information Does It Collect?
+### What Information Does It Collect?
 
 The utility reads the following system identifiers:
 
